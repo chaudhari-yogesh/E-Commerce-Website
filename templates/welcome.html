@@ -1,0 +1,87 @@
+{% extends "homebase.html" %}
+{% block title %} 
+
+Welcome to Apna Mart
+
+{% endblock title %}
+
+{% block css %}
+
+body
+     {
+      background-color: rgb(206, 202, 202);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+     }
+     #card1
+     {
+      border: 2px solid gray;
+      border-radius: 4px;
+     }
+    .welcomeimgtext
+    {
+      position: relative;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .toplefttext
+    {
+       position: absolute;
+       top: 20px;
+       left: 8px;
+       padding-left: 20px;
+       padding-right: 609px;
+
+    }
+    .cardblock
+    {
+      position: absolute;
+      bottom: 220px;
+      left: 126px;
+      background-color:rgb(50, 47, 47);
+      color: white;
+      padding-left: 20px;
+      padding-right: 14px;
+      opacity: 0.7;
+    }
+
+    #deepBtn
+    {
+      border: 2px solid rgb(182, 172, 172);
+      border-radius: 2px;
+      margin-bottom: 4px;
+      padding: 1px;
+      color: rgb(255, 253, 253);
+      background-color:rgb(102, 36, 36)
+    }
+    #deepBtn:hover
+    {
+      background-color: black;
+      border: 2px solid white;
+    }
+
+    #navbtn1
+    {
+      color: silver;
+    }
+    #navbtn2
+    {
+      color: silver;
+    }
+
+{% endblock css %}
+
+{% block body %}
+
+<div class="welcomeimgtext">
+    <img src="/media/shop/images/welcome2.jpg" alt="a girl with the shopping bags" style="width: 100%;height: 93.9%;">
+    <div class="toplefttext">
+      <h3 style="text-align:justify;font-weight: bolder;color:rgb(17, 16, 16);">Welcome to Apna Mart</h3>
+      <p style="font-size: 24px;">It is an E-commerce websites this allows you to buy digital products over the internet rather than at a brick-and-mortar location. Through this website, the businesses can process orders, accept payments, manage shipping and logistics, and provide customer service.</p>
+    </div>
+  </div>
+  
+<div class="cardblock">
+  <p>Explore our new Arrivals</p>
+  <a href="/shop/"><button id="deepBtn">Dive right in </button></a>
+</div>
+{% endblock body %}

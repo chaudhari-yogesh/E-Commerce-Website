@@ -1,0 +1,61 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Product Page {% endblock title %}
+{% block body %}
+<div class="container my-4">
+
+    <div class="row mx-4">
+        <div class="col-md-4" >
+            <img src="/media/{{products.Images}}" alt="This is image" height="300px" width="300px">
+
+            <button type="button" class="btn btn-info my-2 mx-3">Add to cart</button>
+            <button type="button" class="btn btn-info my-2">Purchase</button>
+        </div>
+        
+        <div class="col-md-8">
+            <h6>{{products.product_name}}</h6>
+            <b>Rs {{products.price}}</b>
+            <p>{{products.desc}}</p>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("E-commerce website");
+    if(localStorage.getItem("cart")==null)
+    {
+      var cart= {};
+    }
+    else{
+      cart= JSON.parse(localStorage.getItem("cart"));
+      document.getElementById("cart").innerHTML= Object.keys(cart).length;
+ 
+    }
+ 
+   //  adding jQuery
+ 
+   // cart is the button, if anyone clicke on the add to cart button, then it will be stored its id in it and saved in cart object 
+    $(".cart").click(function(){
+     // console.log("Clicked");
+     
+    var idstr= this.id.toString();
+   //  console.log(idstr);
+ 
+    if (cart[idstr]!=undefined)
+    {
+      cart[idstr]= cart[idstr]+1;
+    }
+ 
+    else
+    {
+     cart[idstr]=1;
+    }
+   //  console.log(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    })
+    $('#popcart').popover();
+ document.getElementById("popcart").setAttribute('data-bs-content', '<h6>Cart for your items in my shopping cart</h6>');
+ </script>
+   
+{% endblock %}

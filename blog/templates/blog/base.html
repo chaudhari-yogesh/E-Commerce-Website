@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+
+    {% block title %}
+    {% endblock title %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!--search for facebook plugins // to add the comments on the website-->
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0" nonce="21hqz4er"></script>
+  </head>
+    
+    
+
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/shop/">Apna Mart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/shop">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/tracker">Tracker</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+             
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <button type="button" class="btn btn-secondary mx-2" id="popcart" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-html="true" data-bs-content="Bottom popover">
+            Cart(<span id="cart">0</span>)
+          </button>
+          
+        </div>
+      </div>
+  </nav>
+
+
+    <!--Making the crousel   -->
+    {% block css %}
+    <style>
+      .col-md-3 {
+        display: inline-block;
+        margin-left: -4px;
+      }
+
+      .carousel-indicators .active {
+        background-color: blue;
+      }
+
+      .col-md-3 img {
+        width: 100%;
+        height: auto;
+      }
+
+      body .carousel-indicator li {
+        background-color: blue;
+      }
+
+      body .carousel-indicators {
+        bottom: 0;
+      }
+
+      body .carousel-control-prev-icon,
+      body .carousel-control-next-icon {
+        background-color: blue;
+      }
+
+      body .no-padding {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
+    {%endblock%}
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+{% block body %}
+<div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/" data-width="" data-numposts="5"></div>
+{% endblock body  %}
+
+
+</body>
+</html>

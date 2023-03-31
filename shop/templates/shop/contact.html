@@ -1,0 +1,37 @@
+{% extends "shop/base.html" %}
+{% block title %}Contact Us{% endblock title %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="container my-4"> 
+    <h4> Contact Us </h4>
+    <div class="col my-4">
+        <form method="post" class="row g-3" action="/shop/contact/">
+            {% csrf_token %}
+        <div class=" col-md-5">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name", name="name" >
+        </div>
+        <div class="col-md-4">
+            <label for="gmail" class="form-label">Email </label>
+            <input type="email" class="form-control" id="gmail", name="gmail" >
+        </div>
+        <div class="col-md-4">
+            <label for="phonenumber" class="form-label">Mobile Number</label>
+            <input type="phone" class="form-control" id="phonenumber", name="phonenumber">
+        </div>
+        <div class="col-md-4">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address", name="address" >
+        </div>
+        <div class="col-md-5">
+            <label for="txtarea" class="form-label">How may help you?</label>
+            <textarea class="form-control" id="txtarea" name="txtarea" rows="3"></textarea>
+        </div>
+        <div>
+            <button class="btn btn-success my-2"  type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}

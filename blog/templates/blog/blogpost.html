@@ -1,0 +1,67 @@
+
+{% extends "blog/base.html" %}
+{% block title %} Blog Post{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">  
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-4 mb-4 font-italic border-bottom">
+          {{postCard.tilte}} </h3>
+  
+        <div class="blog-post">
+          <h2 class="blog-post-title">{{blogCard.head0}}</h2>
+          <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+          
+          <p>{{postCard.chead0}}
+          
+          <h2>{{postCard.head1}}</h2>
+          <p>{{postCard.chead1}}
+          <h3>{{postCard.head2}}</h3>
+          </p>{{postCard.chead2}}</p>
+
+          <!--to add the facebook comments on websites.-->
+          <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{postcard.post_id}}" data-width="" data-numposts="2"></div>
+      
+      </div><!-- /.blog-main -->
+    </div> 
+   
+    <!--blog post contain end here -->
+    
+
+    <aside class="col-md-4 blog-sidebar">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        </div>
+        <div class="p-4">
+          <h4 class="font-italic">Social Media </h4>
+
+          <!--added the faccebook like buttons -->
+          <div class="fb-like" data-href="http://127.0.0.1:8000/blog/blogpost/{{postCard.post_id}}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+          
+          <ol class="list-unstyled">
+            <li><a href="https://github.com/">GitHub</a></li>
+            <li><a href="https://twitter.com/i/flow/login">Twitter</a></li>
+            <li><a href="https://www.facebook.com/login/">Facebook</a></li>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+          </ol>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+    <br>
+    <div>
+      
+      <!--previous and next button on each page-->
+      <a href="/blog/blogpost/{{postCard.post_id|add:1}}"><button type="button" class="btn btn-info">Prev</button></a>
+      <a href="/blog/blogpost/{{postCard.post_id|add:1}}"><button type="button" class="btn btn-info">Next</button></a>
+    </div>
+  </div><!-- /.row -->
+  <br>
+  
+  </main>
+
+</div>
+
+{% endblock body %}

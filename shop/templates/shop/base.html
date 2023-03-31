@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+
+    {% block condition %}
+    
+    {% endblock condition %}
+
+    {% block title %}
+    
+    {% endblock title %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+
+  <body>
+    {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/shop/">Apna Mart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/shop">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/tracker">Tracker</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+          </ul>
+          
+          <form method="get" action="/shop/search/" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" name='search' id='search' aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <button type="button" class="btn btn-secondary mx-2" id="popcart" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-html="true" data-bs-content="Bottom popover">
+            Cart(<span id="cart">0</span>)
+          </button>
+
+          <ul class="navbar-nav">
+
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -5px;">
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+      </div>
+    </nav>
+    {% endif %}
+
+    <!--Making the crousel   -->
+    {% block css %}
+    <style>
+
+     
+      .col-md-3 {
+        display: inline-block;
+        margin-left: -4px;
+      }
+
+      .carousel-indicators .active {
+        background-color: blue;
+      }
+
+      .col-md-3 img {
+        width: 100%;
+        height: auto;
+      }
+
+      body .carousel-indicator li {
+        background-color: blue;
+      }
+
+      body .carousel-indicators {
+        bottom: 0;
+      }
+
+      body .carousel-control-prev-icon,
+      body .carousel-control-next-icon {
+        background-color: blue;
+      }
+
+      body .no-padding {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
+    {%endblock%}
+
+
+    <!-- {% load static %} -->
+
+    <!-- <div class="container">
+<div id="demo" class="carousel slide my-3" data-ride="carousel">
+<ul class="carousel-indicators">
+  <li data-target="#demo" data-slide-to="0" class="active"></li>
+  <li data-target="#demo" data-slide-to="1" ></li>
+  <li data-target="#demo" data-slide-to="2" ></li>
+</ul> -->
+
+    <!--Slideshow starts here -->
+    <!-- <div class="container carousel-inner no-padding">
+
+  <div class="carousel-item active">
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+   </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="carousel-item">
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-item">
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+   </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div> -->
+
+    <!-- left and right controls for the slide -->
+    <!-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+</a>
+<a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+</a> -->
+
+    <!-- <div class="container">
+  {% for data in ProductKey %}
+    <ul>
+      <li>{{data.product_name}}</li>
+      <li>{{data.product_id}}</li>
+      <li>{{data.price}}</li>
+      <li>{{data.category}}</li>
+      <li>{{data.pub_date}}</li>
+      <li>{{data.sub_category}}</li>
+      <li>{{data.Images}}</li>
+    </ul>
+  {%endfor %}
+</div> -->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% block body %}{% endblock body  %}
+
+
+</body>
+</html>

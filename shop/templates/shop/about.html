@@ -1,0 +1,23 @@
+{% extends "shop/base.html" %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container my-3">
+   <div class="row mx-3">
+      <h2>Why We Do </h2>
+      <div class="col-md-6">Our Moto is to develop the usable Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae ullam sint asperiores provident labore ipsam doloribus sed natus sapiente itaque quidem ad vero soluta recusandae dolore voluptate sunt, corrupti eius a fuga deleniti Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloribus ullam aliquam dicta aspernatur doloremque modi ea repudiandae labore nihil fugiat totam, dolorum maiores consequatur blanditiis commodi error minima dolorem qui sint ducimus?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, aliquam itaque earum facilis, illo amet suscipit dolores tempore corrupti adipisci expedita nam officiis ullam officia asperiores ipsa ratione ab at est deserunt voluptas Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolores doloremque enim praesentium suscipit, eaque eligendi quaerat maiores, id consequuntur nihil nobis quasi quibusdam ex illum voluptate eos non magnam expedita aliquam ab?
+      </div>
+      <div class="col-md-6">
+         <img src="/media/shop/images/aboutus.jpg" alt="" width="500px" height="300px">
+      </div>
+      
+   </div>
+</div> 
+
+
+
+
+
+{% endif %}
+
+{% endblock %}
